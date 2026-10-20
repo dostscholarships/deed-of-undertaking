@@ -41,7 +41,7 @@
     background: #ffffff;
     width: 215.9mm;
     height: 330.2mm;
-    padding: 0.45in 0.6in;
+    padding: 0.5in 0.6in;
     box-shadow: 0 1px 2px rgba(15,23,42,0.10), 0 8px 28px rgba(15,23,42,0.16), 0 24px 60px rgba(15,23,42,0.10);
     position: relative;
     color: #000000;
@@ -63,9 +63,6 @@
     font-size: 13px;
     padding: 0 4px 1px 4px;
     background: transparent;
-  }
-
-  .inp-center {
     text-align: center;
   }
 
@@ -99,7 +96,7 @@
 
   .date-wrapper input[type="text"] {
     width: 100%;
-    text-align: left;
+    text-align: center;
   }
 
   .picker-btn {
@@ -227,23 +224,6 @@
   .floating-img-wrapper.selected .rotate-handle,
   .floating-img-wrapper:focus-within .rotate-handle {
     display: flex;
-  }
-
-  .paper.drop-active::after {
-    content: "Drop images or signatures here";
-    position: absolute;
-    inset: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px dashed var(--accent);
-    border-radius: 10px;
-    background: rgba(0, 68, 102, 0.07);
-    color: var(--accent);
-    font-size: 15px;
-    font-weight: 700;
-    pointer-events: none;
-    z-index: 300;
   }
 
   /* Floating Toolbar */
@@ -383,15 +363,17 @@
   .d-row .t.wrap { flex: 1 1 auto; }
   .d-row .t.p { margin-left: -5px; }
 
-  .fld { flex: 1 1 0; min-width: 30px; display: flex; flex-direction: column; }
-  .fld .inp-line { width: 100%; min-width: 0; font-size: 13px; }
+  .fld { flex: 1 1 0; min-width: 40px; display: flex; flex-direction: column; }
+  .fld .inp-line { width: 100%; min-width: 0; font-size: 13px; text-align: center; }
   .fld .cap { font-size: 11px; line-height: 1.15; text-align: center; padding-top: 1px; }
 
+  /* Layout Spacing Adjustments */
   .sign-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; padding: 0 16px; }
-  .sign-grid .sig-line-area { height: 28px; border-bottom: 1px solid #000; margin-bottom: 2px; }
+  .sign-grid .sig-line-area { height: 28px; display: flex; align-items: flex-end; margin-bottom: 2px; }
+  .sign-grid .sig-line-area .inp-line { width: 100%; font-weight: 700; text-transform: uppercase; text-align: center; }
   .sign-grid .sig-cap { text-align: center; font-size: 12.5px; margin-bottom: 6px; }
-  .presence { text-align: center; font-weight: 700; margin: 16px 0 10px; font-size: 13.5px; }
-  .d-last { text-align: justify; margin-bottom: 10px; }
+  .presence { text-align: center; font-weight: 700; margin: 40px 0 12px; font-size: 13.5px; }
+  .d-last { text-align: justify; margin-bottom: 12px; }
 
   .reg-list { display: flex; flex-direction: column; gap: 3px; }
   .reg-list .d-row .t { width: 68px; }
@@ -400,7 +382,7 @@
     html, body { width: 8.5in; height: auto; background: #fff; margin: 0; padding: 0; display: block; overflow: visible; }
     .workspace { display: block; width: 8.5in; margin: 0; }
     .workspace::before { display: none; }
-    .paper { box-shadow: none; width: 8.5in; height: 12.95in; min-height: 0; padding: 0.45in 0.6in; margin: 0; overflow: hidden; }
+    .paper { box-shadow: none; width: 8.5in; height: 12.95in; min-height: 0; padding: 0.5in 0.6in; margin: 0; overflow: hidden; }
     .btn-bar, .btn-delete, .resize-handle, .rotate-handle, .picker-btn, .cal-pop { display: none !important; }
     .floating-img-wrapper { outline: none !important; transform: rotate(var(--rot, 0deg)); }
     .sheet-wrap { width: 8.5in !important; height: 12.95in !important; overflow: hidden; }
@@ -420,7 +402,7 @@
     <div class="d-know">KNOW ALL MEN BY THESE PRESENT:</div>
 
     <form id="deedForm" onsubmit="return false;">
-      <!-- Body Text Section -->
+      <!-- Fillable Section -->
       <div class="d-p">
         <div class="d-row"><span class="t">I,</span><div class="fld"><input type="text" class="inp-line scholar-sync" aria-label="Scholar"><span class="cap">(Scholar)</span></div><span class="t">and</span><div class="fld"><input type="text" class="inp-line comaker-sync" aria-label="Co-Maker"><span class="cap">(Co-Maker)</span></div><span class="t p">, both of</span></div>
         <div class="d-row"><span class="t">legal age, Filipino citizens and residents of</span><div class="fld"><input type="text" class="inp-line" aria-label="Scholar’s address"><span class="cap">(Scholar’s Address)</span></div></div>
@@ -458,72 +440,48 @@
         <div class="d-row"><span class="t">in case of my failure to return to the Philippines on</span><div class="fld"><div class="date-wrapper"><input type="text" class="inp-line text-date date-return-sync" aria-label="Date of Return"><button type="button" class="picker-btn" onclick="openDatePicker(this)" aria-label="Pick a date" title="Pick a date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></button></div><span class="cap">(Date of Return)</span></div><span class="t p">.</span></div>
       </div>
 
-      <!-- EDITABLE IN WITNESS WHEREOF SECTION -->
+      <!-- IN WITNESS WHEREOF SECTION -->
       <div class="d-p" style="margin-top: 14px;">
-        <div class="d-row">
-          <span class="t">IN WITNESS WHEREOF, we have here to set our hands this</span>
-          <div class="fld" style="flex: 0 0 75px;"><input type="text" class="inp-line inp-center" aria-label="Day"></div>
-          <span class="t">day of</span>
-          <div class="fld" style="flex: 0 0 110px;"><input type="text" class="inp-line inp-center" aria-label="Month"></div>
-          <span class="t">in</span>
-        </div>
-        <div class="d-row" style="margin-top: 3px;">
-          <div class="fld" style="flex: 0 0 200px;"><input type="text" class="inp-line inp-center" aria-label="Year / Location"></div>
-          <span class="t p">.</span>
-        </div>
+        <div class="d-row"><span class="t">IN WITNESS WHEREOF, we have here to set our hands this</span><div class="fld" style="flex: 0 0 75px;"><input type="text" class="inp-line" aria-label="Day"></div><span class="t">day of</span><div class="fld" style="flex: 0 0 110px;"><input type="text" class="inp-line" aria-label="Month"></div><span class="t">in</span></div>
+        <div class="d-row" style="margin-top: 3px;"><div class="fld" style="flex: 0 0 200px;"><input type="text" class="inp-line" aria-label="Year or Location"></div><span class="t p">.</span></div>
       </div>
 
-      <!-- EDITABLE SIGNATURE & CTC/ID SECTION -->
-      <div class="sign-grid" style="margin-top: 16px;">
+      <!-- SCHOLAR & CO-MAKER SIGNATURE SECTION -->
+      <div class="sign-grid" style="margin-top: 70px;">
         <div>
-          <div class="fld" style="margin-bottom: 2px;">
-            <input type="text" class="inp-line inp-center scholar-sync" aria-label="Scholar Name Signature Line" placeholder="">
-          </div>
+          <div class="sig-line-area"><input type="text" class="inp-line scholar-sync" aria-label="Scholar Name"></div>
           <div class="sig-cap">Scholar</div>
-          <div class="d-row"><span class="t">CTC #</span><div class="fld"><input type="text" class="inp-line" aria-label="Scholar CTC Number"></div></div>
-          <div class="d-row" style="margin-top: 3px;"><span class="t">Date of Issue</span><div class="fld"><input type="text" class="inp-line" aria-label="Scholar Date of Issue"></div></div>
+          <div class="d-row"><span class="t">CTC #</span><input type="text" class="inp-line" aria-label="Scholar CTC Number"></div>
+          <div class="d-row" style="margin-top: 3px;"><span class="t">Date of Issue</span><input type="text" class="inp-line" aria-label="Scholar CTC Date of Issue"></div>
         </div>
         <div>
-          <div class="fld" style="margin-bottom: 2px;">
-            <input type="text" class="inp-line inp-center comaker-sync" aria-label="Co-Maker Name Signature Line" placeholder="">
-          </div>
+          <div class="sig-line-area"><input type="text" class="inp-line comaker-sync" aria-label="Co-Maker Name"></div>
           <div class="sig-cap">Co-Maker</div>
-          <div class="d-row"><span class="t">CTC #</span><div class="fld"><input type="text" class="inp-line" aria-label="Co-Maker CTC Number"></div></div>
-          <div class="d-row" style="margin-top: 3px;"><span class="t">Date of Issue</span><div class="fld"><input type="text" class="inp-line" aria-label="Co-Maker Date of Issue"></div></div>
+          <div class="d-row"><span class="t">CTC #</span><input type="text" class="inp-line" aria-label="Co-Maker CTC Number"></div>
+          <div class="d-row" style="margin-top: 3px;"><span class="t">Date of Issue</span><input type="text" class="inp-line" aria-label="Co-Maker CTC Date of Issue"></div>
         </div>
       </div>
 
+      <!-- WITNESS SIGNATURE SECTION -->
       <div class="presence">SIGNED IN THE PRESENCE OF:</div>
       <div class="sign-grid">
-        <div class="fld"><input type="text" class="inp-line inp-center" aria-label="Witness 1 Name"></div>
-        <div class="fld"><input type="text" class="inp-line inp-center" aria-label="Witness 2 Name"></div>
+        <div class="sig-line-area"><input type="text" class="inp-line" aria-label="Witness 1 Name"></div>
+        <div class="sig-line-area"><input type="text" class="inp-line" aria-label="Witness 2 Name"></div>
       </div>
 
-      <!-- EDITABLE NOTARIAL ACKNOWLEDGMENT SECTION -->
-      <div class="d-p" style="margin-top: 16px;">
-        <div class="d-row">
-          <span class="t">BEFORE ME THIS</span>
-          <div class="fld" style="flex: 0 0 150px;"><input type="text" class="inp-line inp-center" aria-label="Date Before Me"></div>
-          <span class="t">in</span>
-          <div class="fld"><input type="text" class="inp-line" aria-label="Place of Notarization"></div>
-          <span class="t">personally appeared</span>
-        </div>
-        <div class="d-row" style="margin-top: 3px;">
-          <div class="fld"><input type="text" class="inp-line scholar-sync" aria-label="Notarial Scholar Name"></div>
-          <span class="t">and</span>
-          <div class="fld"><input type="text" class="inp-line comaker-sync" aria-label="Notarial Co-Maker Name"></div>
-          <span class="t">presented themselves to be the</span>
-        </div>
+      <!-- NOTARIAL SECTION -->
+      <div class="d-p" style="margin-top: 18px;">
+        <div class="d-row"><span class="t">BEFORE ME THIS</span><div class="fld" style="flex: 0 0 150px;"><input type="text" class="inp-line" aria-label="Date Before Me"></div><span class="t">in</span><div class="fld"><input type="text" class="inp-line" aria-label="Location Before Me"></div><span class="t">personally appeared</span></div>
+        <div class="d-row" style="margin-top: 3px;"><div class="fld"><input type="text" class="inp-line scholar-sync" aria-label="Appeared Scholar Name"></div><span class="t">and</span><div class="fld"><input type="text" class="inp-line comaker-sync" aria-label="Appeared Co-Maker Name"></div><span class="t">presented themselves to be the</span></div>
       </div>
       <div class="d-last">same persons who executed this instrument and acknowledge the same to be their true and voluntary act and deed.</div>
 
-      <div class="d-p" style="margin-top: 10px;">Witness my hand and seal</div>
+      <div class="d-p" style="margin-top: 12px;">Witness my hand and seal</div>
 
-      <!-- EDITABLE REGISTRY SECTION -->
-      <div class="reg-list" style="margin-top: 8px;">
-        <div class="d-row"><span class="t">Doc. No.</span><div class="fld" style="flex: 0 0 130px;"><input type="text" class="inp-line" aria-label="Doc No."></div></div>
-        <div class="d-row"><span class="t">Page No.</span><div class="fld" style="flex: 0 0 130px;"><input type="text" class="inp-line" aria-label="Page No."></div></div>
-        <div class="d-row"><span class="t">Book No.</span><div class="fld" style="flex: 0 0 130px;"><input type="text" class="inp-line" aria-label="Book No."></div></div>
+      <div class="reg-list" style="margin-top: 10px;">
+        <div class="d-row"><span class="t">Doc. No.</span><div class="fld" style="flex: 0 0 130px;"><input type="text" class="inp-line" aria-label="Doc No"></div></div>
+        <div class="d-row"><span class="t">Page No.</span><div class="fld" style="flex: 0 0 130px;"><input type="text" class="inp-line" aria-label="Page No"></div></div>
+        <div class="d-row"><span class="t">Book No.</span><div class="fld" style="flex: 0 0 130px;"><input type="text" class="inp-line" aria-label="Book No"></div></div>
         <div class="d-row"><span class="t">Series of</span><div class="fld" style="flex: 0 0 130px;"><input type="text" class="inp-line" aria-label="Series of"></div></div>
       </div>
     </form>
@@ -532,7 +490,7 @@
 </div>
 </div>
 
-<!-- Upload / Print Toolbar -->
+<!-- Action Toolbar -->
 <div class="btn-bar action-bar" role="toolbar" aria-label="Form actions">
   <button type="button" class="btn btn-secondary" onclick="triggerImageUpload()" title="Upload pictures or signatures. You can drop images onto the form, drag to move, pull corner to resize, and rotate." aria-label="Upload pictures or signatures">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
@@ -834,7 +792,7 @@
     if (!e.target.closest('.floating-img-wrapper')) deselectAllExcept(null);
   });
 
-  /* Safety fit for print */
+  /* Print Fit Safety */
   (function () {
     const deed = document.querySelector('.deed');
     function fitForPrint() {
