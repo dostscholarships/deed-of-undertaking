@@ -353,6 +353,19 @@
   .deed .d-know { font-weight: 700; margin-bottom: 12px; font-size: 13.5px; }
   .deed .d-p { margin-bottom: 10px; }
 
+  /* Form code box (top right) */
+  .form-code {
+    position: absolute;
+    top: 0.35in;
+    right: 0.6in;
+    padding: 3px 8px;
+    border: 1px solid #000;
+    font-size: 11px;
+    line-height: 1.25;
+    text-align: left;
+    background: #fff;
+  }
+
   .d-row {
     display: flex;
     align-items: baseline;
@@ -365,13 +378,14 @@
 
   .fld { flex: 1 1 0; min-width: 40px; display: flex; flex-direction: column; }
   .fld .inp-line { width: 100%; min-width: 0; font-size: 13px; text-align: center; }
-  .fld .cap { font-size: 11px; line-height: 1.15; text-align: center; padding-top: 1px; }
+  .fld .cap { font-size: 11px; line-height: 1.15; text-align: center; padding-top: 1px; font-style: italic; }
 
   /* Layout Spacing Adjustments */
   .sign-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; padding: 0 16px; }
   .sign-grid .sig-line-area { height: 28px; display: flex; align-items: flex-end; margin-bottom: 2px; }
   .sign-grid .sig-line-area .inp-line { width: 100%; font-weight: 700; text-transform: uppercase; text-align: center; }
-  .sign-grid .sig-cap { text-align: center; font-size: 12.5px; margin-bottom: 6px; }
+  .sign-grid .sig-cap { text-align: center; font-size: 12.5px; margin-bottom: 6px; font-weight: 700; font-style: italic; }
+  .sign-grid .wit-cap { text-align: center; font-size: 11.5px; font-weight: 700; font-style: italic; }
   .presence { text-align: center; font-weight: 700; margin: 40px 0 12px; font-size: 13.5px; }
   .d-last { text-align: justify; margin-bottom: 12px; }
 
@@ -396,18 +410,20 @@
 
 <div class="sheet-wrap" id="sheetWrap">
 <div class="paper" id="paperDoc">
+
+  <div class="form-code">STSD-014<br>Rev. 0 / 8-10-15</div>
+
   <div class="deed">
 
-    <div class="d-title">Deed of Undertaking</div>
-    <div class="d-know">KNOW ALL MEN BY THESE PRESENT:</div>
+    <div class="d-title">Deed of Undertaking (DOU)</div>
+    <div class="d-know">KNOW ALL MEN BY THESE PRESENTS:</div>
 
     <form id="deedForm" onsubmit="return false;">
       <!-- Fillable Section -->
       <div class="d-p">
         <div class="d-row"><span class="t">I,</span><div class="fld"><input type="text" class="inp-line scholar-sync" aria-label="Scholar"><span class="cap">(Scholar)</span></div><span class="t">and</span><div class="fld"><input type="text" class="inp-line comaker-sync" aria-label="Co-Maker"><span class="cap">(Co-Maker)</span></div><span class="t p">, both of</span></div>
         <div class="d-row"><span class="t">legal age, Filipino citizens and residents of</span><div class="fld"><input type="text" class="inp-line" aria-label="Scholar’s address"><span class="cap">(Scholar’s Address)</span></div></div>
-        <div class="d-row"><div class="fld"><input type="text" class="inp-line" aria-label="Scholar’s address, continued"></div><span class="t">and</span><div class="fld"><input type="text" class="inp-line" aria-label="Co-Maker’s address"><span class="cap">(Co-Maker’s Address)</span></div></div>
-        <div class="d-row"><div class="fld"><input type="text" class="inp-line" aria-label="Co-Maker’s address, continued"></div><span class="t p">, respectively, Philippines do hereby depose and say:</span></div>
+        <div class="d-row"><span class="t">and</span><div class="fld"><input type="text" class="inp-line" aria-label="Co-Maker’s address"><span class="cap">(Co-Maker’s Address)</span></div><span class="t p">, respectively, Philippines do hereby depose and say:</span></div>
       </div>
 
       <div class="d-p">
@@ -427,11 +443,12 @@
         <div class="d-row"><span class="t wrap">pay the financial support provided to me during my scholarship under the DOST-SEI Scholarship Program.</span></div>
       </div>
 
+      <!-- Co-Maker paragraph: now matches the PDF (relationship field, "should" row, "Moreover..." sentence) -->
       <div class="d-p">
-        <div class="d-row"><span class="t">That I,</span><div class="fld"><input type="text" class="inp-line comaker-sync" aria-label="Co-Maker"><span class="cap">(Co-Maker)</span></div><span class="t">promise to pay the financial support given</span></div>
-        <div class="d-row"><span class="t">to</span><div class="fld"><input type="text" class="inp-line scholar-sync" aria-label="Scholar"><span class="cap">(Scholar)</span></div><span class="t">under the DOST–SEI Scholarship Program should</span></div>
-        <div class="d-row"><div class="fld"><input type="text" class="inp-line scholar-sync" aria-label="Scholar"><span class="cap">(Scholar)</span></div><span class="t">fail to return to the Philippines to fulfill his/her</span></div>
-        <div class="d-row"><span class="t">scholarship financial or service obligation.</span></div>
+        <div class="d-row"><span class="t">That I,</span><div class="fld"><input type="text" class="inp-line comaker-sync" aria-label="Co-Maker"><span class="cap">(Co-Maker)</span></div><span class="t p">,</span><div class="fld"><input type="text" class="inp-line" aria-label="Relationship to Scholar"><span class="cap">(Relationship to Scholar)</span></div><span class="t">promise to pay the</span></div>
+        <div class="d-row"><span class="t">financial support given to</span><div class="fld"><input type="text" class="inp-line scholar-sync" aria-label="Scholar"><span class="cap">(Scholar)</span></div><span class="t">under the DOST–SEI Scholarship Program</span></div>
+        <div class="d-row"><span class="t">should</span><div class="fld"><input type="text" class="inp-line scholar-sync" aria-label="Scholar"><span class="cap">(Scholar)</span></div><span class="t">fail to return to the Philippines to fulfill his/her</span></div>
+        <div class="d-row"><span class="t wrap">scholarship financial or service obligation. Moreover, I declare that I am not an accompanying party of this travel.</span></div>
       </div>
 
       <div class="d-p">
@@ -442,8 +459,8 @@
 
       <!-- IN WITNESS WHEREOF SECTION -->
       <div class="d-p" style="margin-top: 14px;">
-        <div class="d-row"><span class="t">IN WITNESS WHEREOF, we have here to set our hands this</span><div class="fld" style="flex: 0 0 75px;"><input type="text" class="inp-line" aria-label="Day"></div><span class="t">day of</span><div class="fld" style="flex: 0 0 110px;"><input type="text" class="inp-line" aria-label="Month"></div><span class="t">in</span></div>
-        <div class="d-row" style="margin-top: 3px;"><div class="fld" style="flex: 0 0 200px;"><input type="text" class="inp-line" aria-label="Year or Location"></div><span class="t p">.</span></div>
+        <div class="d-row"><span class="t">IN WITNESS WHEREOF, we have hereto set our hands this</span><div class="fld" style="flex: 0 0 75px;"><input type="text" class="inp-line" aria-label="Day"></div><span class="t">day of</span><div class="fld" style="flex: 0 0 110px;"><input type="text" class="inp-line" aria-label="Month"></div><span class="t">in</span></div>
+        <div class="d-row" style="margin-top: 3px;"><div class="fld" style="flex: 0 0 200px;"><input type="text" class="inp-line" aria-label="Place"></div><span class="t p">.</span></div>
       </div>
 
       <!-- SCHOLAR & CO-MAKER SIGNATURE SECTION -->
@@ -465,18 +482,24 @@
       <!-- WITNESS SIGNATURE SECTION -->
       <div class="presence">SIGNED IN THE PRESENCE OF:</div>
       <div class="sign-grid">
-        <div class="sig-line-area"><input type="text" class="inp-line" aria-label="Witness 1 Name"></div>
-        <div class="sig-line-area"><input type="text" class="inp-line" aria-label="Witness 2 Name"></div>
+        <div>
+          <div class="sig-line-area"><input type="text" class="inp-line" aria-label="Witness 1 Name"></div>
+          <div class="wit-cap">Witness (Printed Name and Signature)</div>
+        </div>
+        <div>
+          <div class="sig-line-area"><input type="text" class="inp-line" aria-label="Witness 2 Name"></div>
+          <div class="wit-cap">Witness (Printed Name and Signature)</div>
+        </div>
       </div>
 
       <!-- NOTARIAL SECTION -->
       <div class="d-p" style="margin-top: 18px;">
-        <div class="d-row"><span class="t">BEFORE ME THIS</span><div class="fld" style="flex: 0 0 150px;"><input type="text" class="inp-line" aria-label="Date Before Me"></div><span class="t">in</span><div class="fld"><input type="text" class="inp-line" aria-label="Location Before Me"></div><span class="t">personally appeared</span></div>
-        <div class="d-row" style="margin-top: 3px;"><div class="fld"><input type="text" class="inp-line scholar-sync" aria-label="Appeared Scholar Name"></div><span class="t">and</span><div class="fld"><input type="text" class="inp-line comaker-sync" aria-label="Appeared Co-Maker Name"></div><span class="t">presented themselves to be the</span></div>
+        <div class="d-row"><span class="t">BEFORE ME, THIS</span><div class="fld" style="flex: 0 0 150px;"><input type="text" class="inp-line" aria-label="Date Before Me"></div><span class="t">in</span><div class="fld"><input type="text" class="inp-line" aria-label="Location Before Me"></div><span class="t">personally appeared</span></div>
+        <div class="d-row" style="margin-top: 3px;"><div class="fld"><input type="text" class="inp-line scholar-sync" aria-label="Appeared Scholar Name"></div><span class="t">and</span><div class="fld"><input type="text" class="inp-line comaker-sync" aria-label="Appeared Co-Maker Name"></div><span class="t">presented themselves to be the same</span></div>
       </div>
-      <div class="d-last">same persons who executed this instrument and acknowledge the same to be their true and voluntary act and deed.</div>
+      <div class="d-last">persons who executed this instrument and acknowledge the same to be their true and voluntary act and deed.</div>
 
-      <div class="d-p" style="margin-top: 12px;">Witness my hand and seal</div>
+      <div class="d-p" style="margin-top: 12px;">Witness my hand and seal:</div>
 
       <div class="reg-list" style="margin-top: 10px;">
         <div class="d-row"><span class="t">Doc. No.</span><div class="fld" style="flex: 0 0 130px;"><input type="text" class="inp-line" aria-label="Doc No"></div></div>
